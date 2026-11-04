@@ -1,0 +1,138 @@
+/* style.css — feuille de style commune aux pages publiques BlindzRun
+   Une seule source pour toutes les pages : privacy, terms, data-export,
+   account-deletion, join et index. */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #6366F1;
+  --primary-dark: #4F46E5;
+  --secondary: #8B5CF6;
+  --text: #1F2937;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --bg: #F9FAFB;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+               'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.65;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 860px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .12);
+  overflow: hidden;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff;
+  padding: 40px 30px;
+  text-align: center;
+}
+.header h1 { font-size: 32px; margin-bottom: 10px; }
+.header p  { font-size: 18px; opacity: .92; }
+
+nav.breadcrumb {
+  padding: 12px 30px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+nav.breadcrumb a { color: var(--primary); text-decoration: none; margin-right: 14px; }
+nav.breadcrumb a:hover { text-decoration: underline; }
+
+.content { padding: 40px 30px; }
+
+.section { margin-bottom: 34px; }
+.section h2 {
+  color: var(--primary);
+  font-size: 23px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+.section h3 { color: #444; font-size: 18px; margin: 22px 0 10px; }
+.section p, .section ul, .section ol { margin-bottom: 15px; color: #4b5563; }
+.section ul, .section ol { padding-left: 26px; }
+.section li { margin-bottom: 8px; }
+
+.warning-box, .info-box, .success-box {
+  padding: 15px; margin: 20px 0; border-radius: 4px;
+}
+.warning-box { background: #fff3cd; border-left: 4px solid #ffc107; }
+.warning-box p { color: #856404; margin: 0; }
+.info-box    { background: #d1ecf1; border-left: 4px solid #17a2b8; }
+.info-box p  { color: #0c5460; margin: 0; }
+.success-box { background: #d4edda; border-left: 4px solid #28a745; }
+.success-box p { color: #155724; margin: 0; }
+
+.steps { background: var(--bg); padding: 20px; border-radius: 8px; margin: 20px 0; }
+.step  { display: flex; margin-bottom: 15px; align-items: flex-start; }
+.step:last-child { margin-bottom: 0; }
+.step-number {
+  background: var(--primary); color: #fff;
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; margin-right: 15px; flex-shrink: 0;
+}
+.step-content { flex: 1; padding-top: 4px; }
+
+.contact-button, .cta {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff; padding: 12px 30px; text-decoration: none;
+  border-radius: 25px; font-weight: 600; transition: transform .2s;
+  margin-top: 10px; border: none; cursor: pointer; font-size: 16px;
+}
+.contact-button:hover, .cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, .3);
+}
+.cta.secondary {
+  background: #fff; color: var(--primary); border: 2px solid var(--primary);
+}
+
+.data-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+.data-table th, .data-table td {
+  padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0;
+}
+.data-table th { background: var(--bg); color: var(--primary); font-weight: 600; }
+.data-table tr:hover { background: var(--bg); }
+
+.code-pill {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 30px; letter-spacing: 6px; font-weight: 700;
+  color: var(--primary); background: #eef2ff;
+  padding: 14px 26px; border-radius: 10px; margin: 10px 0;
+}
+
+.footer {
+  background: var(--bg); padding: 22px 30px; text-align: center;
+  color: #777; font-size: 14px; border-top: 1px solid var(--border);
+}
+.footer a { color: var(--primary); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+.updated { font-size: 14px; color: var(--muted); font-style: italic; }
+
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .container { margin: 16px auto; }
+  .header { padding: 30px 20px; }
+  .header h1 { font-size: 25px; }
+  .content { padding: 26px 18px; }
+  .data-table { font-size: 14px; }
+  .data-table th, .data-table td { padding: 8px; }
+  .code-pill { font-size: 24px; letter-spacing: 4px; }
+}
