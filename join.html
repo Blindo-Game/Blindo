@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rejoindre une partie — blindzQuest</title>
+<meta name="description" content="Rejoignez une partie blindzQuest à partir de son code.">
+<link rel="stylesheet" href="pages.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🏁 Rejoindre une partie</h1>
+    <p>blindzQuest</p>
+  </div>
+
+  <div class="content">
+    <div class="section" style="text-align:center">
+      <h2 style="border:none">Code de la course</h2>
+      <p id="no-code" style="display:none">
+        Aucun code n'a été fourni dans le lien. Ouvrez l'application et saisissez
+        le code communiqué par l'organisateur.
+      </p>
+      <div id="code-block">
+        <span class="code-pill" id="code">------</span>
+        <p>Saisissez ce code dans l'application pour rejoindre la course.</p>
+        <p>
+          <a class="cta" id="deeplink" href="#">📱 Ouvrir dans blindzQuest</a>
+        </p>
+        <p style="margin-top:24px">
+          <a class="cta secondary" id="store"
+             href="https://play.google.com/store/apps/details?id=com.blindo.blindo">
+            ⬇️ Télécharger l'application
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Comment ça marche ?</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Installez blindzQuest</strong><br>
+            Disponible sur Android et iOS.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Créez votre compte</strong><br>
+            2 500 BlindzCoins vous sont offerts à l'inscription.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Rejoignez la course</strong><br>
+            Onglet <em>Courses</em> → <em>Rejoindre une partie</em> → saisissez le code
+            ci-dessus, ou scannez directement le QR code de l'organisateur.
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Choisissez votre rôle</strong><br>
+            <strong>Coureur</strong> (les yeux bandés) ou <strong>guide</strong>
+            (vous dirigez votre coéquipier à la voix).
+          </div>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <p>
+          <strong>⚠️ Sécurité :</strong> une partie en aveugle se pratique uniquement
+          sur un terrain dégagé et fermé à la circulation, avec un accompagnateur
+          voyant à proximité immédiate du coureur. Réservé aux 18 ans et plus.
+          Voir les <a href="terms.html">règles complètes</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    blindzQuest — <a href="index.html">Accueil</a> ·
+    <a href="privacy-policy.html">Confidentialité</a> ·
+    <a href="terms.html">CGU</a>
+  </div>
+</div>
+
+<script>
+  // Le QR code d'une partie encode : https://blindo-game.github.io/Blindo/join.html?code=ABC123
+  // On affiche le code et on propose le deep link vers l'application.
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var raw = (params.get('code') || '').toUpperCase();
+    var valid = /^[A-Z0-9]{6}$/.test(raw);
+
+    if (!valid) {
+      document.getElementById('code-block').style.display = 'none';
+      document.getElementById('no-code').style.display = 'block';
+      return;
+    }
+
+    document.getElementById('code').textContent = raw;
+    document.getElementById('deeplink').href = 'blindo://race/join?code=' + raw;
+
+    // Lien de téléchargement adapté à la plateforme
+    var ua = navigator.userAgent || '';
+    if (/iPad|iPhone|iPod/.test(ua)) {
+      document.getElementById('store').href =
+        'https://apps.apple.com/app/blindzquest/id000000000';
+    }
+  })();
+</script>
+</body>
+</html>
